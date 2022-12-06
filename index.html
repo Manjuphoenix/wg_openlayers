@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>WMS GetFeatureInfo (Tile Layer)</title>
+    <link rel="stylesheet" href="node_modules/ol/ol.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
+    <style>
+        .map {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+<div id="header" class="col-md-12">
+    <h1 class="text-center">Western Ghats</h1>
+    <div align="right">
+        <button onclick="window.parent.villages()">Villages</button>
+        <button onclick="window.parent.districts()">Districts</button>
+    </div>
+</div>
+
+<div id="map" class="map col-md-9"></div>
+<div id="side_panel" style="position: absolute; height: 100%; background-color: steelblue" class="col-md-3 col-sm-12">
+    <h1 style="color: greenyellow" class="text-center"><strong>Information</strong></h1>
+    <form>
+      <label for="type">Action type &nbsp;</label>
+      <select id="type">
+        <option value="singleselect" selected>Single Select</option>
+        <option value="multiselect">Multi Select</option>
+        <option value="singleselect-hover">Single Select on hover</option>
+      </select>
+    </form>
+
+    <div style="background-color: steelblue; color: white"><p style="color: yellow">Village Information:</p>
+        <strong><p id="esr"></p></strong>
+        <p id="st_nm"></p>
+        <p id="tehs_nm"></p>
+        <p id="dist_nm"></p>
+        <p id="village_nm"></p>
+    </div>
+    <div id="info1" style="background-color: steelblue; color: white"><p style="color: yellow">District Information:</p>
+        <strong><p id="esr1"></p></strong>
+        <p id="district"></p>
+        <p id="st_name"></p>
+        <p id="area"></p>
+    </div>
+
+    <div class="dropdown">
+        State Name: <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+        </ul>
+    </div>
+
+<div>
+
+</div>
+
+</div>
+<div id="footer" class="col-md-12">
+</div>
+<script>
+    function onclick(){
+        console.log("Hey there!!!!")
+    }
+</script>
+<script type="module" src="main.js"></script>
+<!--   <script type="module" src="OpenLayers_Bhuvan.js"></script> -->
+</body>
+</html>
