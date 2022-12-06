@@ -4,7 +4,6 @@ import TileWMS from 'ol/source/TileWMS';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 
-
 var wg_villages = new TileLayer({
     title: 'villages',
     source: new TileWMS({
@@ -24,11 +23,16 @@ var wg_districts = new TileLayer({
         visible: true
     })
 });
+
+
+
 window.villages = function () {
-    map.removeControl(wg_districts);
+    map.removeLayer(wg_districts);
     map.addLayer(wg_villages);
     map.on('singleclick', function (evt) {
+
   const viewResolution = /** @type {number} */ (view.getResolution());
+  // wg_villages.addFeature(selected_polygon_style);
   var url = wg_villages.getSource().getFeatureInfoUrl(
     evt.coordinate,
     viewResolution,
@@ -43,20 +47,39 @@ window.villages = function () {
       .then((response) => response.text()
       )
       .then((text) => {
-        document.getElementById('info').innerText = text;
+        // document.getElementById('info').innerText = text;
+        // console.log(text);
+        var ESR = "";
+        var index = text.indexOf('the_geom');
+                var newstring = text.slice(index);
+                // var newindex1 = text.indexOf('IISC_WGESR');
+                // IISC_EWG = text.slice(newindex1);
+                ESR = newstring.split("\n");
+                // console.log(ESR[0]);
+                console.log(ESR[1]);
+                console.log(ESR[2]);
+                console.log(ESR[3]);
+                console.log(ESR[4]);
+                console.log(ESR[5]);
+        document.getElementById('st_nm').innerText = ESR[2];
+        document.getElementById('tehs_nm').innerText = ESR[3];
+        document.getElementById('dist_nm').innerText = ESR[5];
+        document.getElementById('village_nm').innerText = ESR[18];
+        document.getElementById('esr').innerText = ESR[23];
       });
   }
 });
 };
 
+function setGlobal(distid){
+    console.log(distid);
+}
+
 window.districts = function () {
-    map.removeControl(wg_villages);
-    map.addLayer(wg_districts);
     map.removeLayer(wg_villages);
-    map.removeInteraction(wg_villages);
+    map.addLayer(wg_districts);
 
     map.on('singleclick', function (evt) {
-    // var locationid = document.getElementById('info').innerHTML = '';
   const viewResolution = /** @type {number} */ (view.getResolution());
   var url1 = wg_districts.getSource().getFeatureInfoUrl(
     evt.coordinate,
@@ -64,28 +87,50 @@ window.districts = function () {
     'EPSG:3857',
     {
         'LAYERS': 'WesternGhats:wg_districts',
+
     }
   );
   console.log(url1);
   if (url1) {
-      console.log(fetch(url1))
     fetch(url1)
       .then((response) => response.text()
       )
       .then((text) => {
+          // var values = document.getElementById('info').innerText = text;
           console.log(text);
-          var newtext = text.indexOf("id");
-          console.log(newtext.id);
-        //var values = document.getElementById('info').innerText = text;
-        // console.log(values)
+        var ESR = "";
+        var index = text.indexOf('id');
+                var newstring = text.slice(index);
+                // var newindex1 = text.indexOf('IISC_WGESR');
+                // IISC_EWG = text.slice(newindex1);
+                ESR = newstring.split("\n");
+                // console.log(ESR[0]);
+                console.log(ESR[1]);
+                console.log(ESR[2]);
+                console.log(ESR[3]);
+                console.log(ESR[4]);
+                console.log(ESR[5]);
+        document.getElementById('district').innerText = ESR[1];
+        document.getElementById('st_name').innerText = ESR[2];
+        document.getElementById('area').innerText = ESR[3];
+          // console.log(typeof values);
+        // var district_id = text.slice(119, 121);
+        // setGlobal(district_id);
+        // console.log(district_id);
+        // var values = JSON.parse(text["Results for FeatureType 'https://wgbis.ces.iisc.ac.in:wg_districts':"]);
+        // console.log(values);
+
       });
   }
 });
+
 };
+
+// console.log(setGlobal.district_id + "Hey there");
 
 const view = new View({
     center: [0, 0],
-    zoom: 1,
+    zoom: 5,
 });
 
 const map = new Map({
