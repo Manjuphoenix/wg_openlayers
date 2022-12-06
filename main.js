@@ -50,12 +50,13 @@ window.villages = function () {
         // document.getElementById('info').innerText = text;
         // console.log(text);
         var ESR = "";
-        var index = text.indexOf('the_geom');
+        var index = text.indexOf('objectid');
                 var newstring = text.slice(index);
+                console.log(newstring)
                 // var newindex1 = text.indexOf('IISC_WGESR');
                 // IISC_EWG = text.slice(newindex1);
                 ESR = newstring.split("\n");
-                // console.log(ESR[0]);
+                console.log(ESR[0]);
                 console.log(ESR[1]);
                 console.log(ESR[2]);
                 console.log(ESR[3]);
