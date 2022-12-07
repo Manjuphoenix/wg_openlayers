@@ -4,6 +4,13 @@ import TileWMS from 'ol/source/TileWMS';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 
+const style = new Style({
+  fill: new Fill({
+    color: '#eeeeee',
+  }),
+});
+
+
 var wg_villages = new TileLayer({
     title: 'villages',
     source: new TileWMS({
@@ -24,13 +31,15 @@ var wg_districts = new TileLayer({
     })
 });
 
-
-
-window.villages = function () {
-    map.removeLayer(wg_districts);
+function wg_village() {
     map.addLayer(wg_villages);
-    map.on('singleclick', function (evt) {
+    map.removeLayer(wg_districts);
+    document.getElementById('district').innerText = "";
+    document.getElementById('st_name').innerText = "";
+    document.getElementById('area').innerText = "";
 
+
+    map.on('singleclick', function (evt) {
   const viewResolution = /** @type {number} */ (view.getResolution());
   // wg_villages.addFeature(selected_polygon_style);
   var url = wg_villages.getSource().getFeatureInfoUrl(
@@ -76,8 +85,18 @@ function setGlobal(distid){
     console.log(distid);
 }
 
-window.districts = function () {
+function wg_district() {
     map.removeLayer(wg_villages);
+    // map.removeInteraction(wg_villages);
+    // map.removeControl(wg_villages);
+    // map.removeEventListener(wg_villages);
+    // map.removeOverlay(wg_villages);
+    document.getElementById('st_nm').innerText = "";
+    document.getElementById('tehs_nm').innerText = "";
+    document.getElementById('dist_nm').innerText = "";
+    document.getElementById('village_nm').innerText = "";
+    document.getElementById('esr').innerText = "";
+    map.getLayers(wg_village);
     map.addLayer(wg_districts);
 
     map.on('singleclick', function (evt) {
@@ -124,10 +143,11 @@ window.districts = function () {
       });
   }
 });
-
 };
 
-// console.log(setGlobal.district_id + "Hey there");
+
+window.villages = wg_village;
+window.districts = wg_district;
 
 const view = new View({
     center: [0, 0],
