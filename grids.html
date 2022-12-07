@@ -16,51 +16,50 @@
         }
     </style>
 </head>
-<body>
+<body onload = "window.parent.grids()">
 <div id="header" class="col-md-12">
     <h1 class="text-center">Western Ghats</h1>
     <div align="right">
-        <button onclick="window.parent.villages()"><a onclick="window.parent.villages()" href="">Villages</a> </button>
-        <button onclick="window.parent.districts()"><a onclick="window.parent.districts()" href="">Districts</a> </button>
+        <a href="index.html"><button>Villages</button></a>
+        <a href="districts.html"><button>Districts</button></a>
+        <a href="grids.html"><button>Grids</button></a>
+        <a href="states.html"><button>States</button></a>
+        <a href="taluks.html"><button>Taluks</button></a>
+        <a href="westernghats.html"><button>Westernghats</button></a>
     </div>
 </div>
 
 <div id="map" class="map col-md-9"></div>
 <div id="side_panel" style="position: absolute; height: 100%; background-color: steelblue" class="col-md-3 col-sm-12">
     <h1 style="color: greenyellow" class="text-center"><strong>Information</strong></h1>
-    <form>
-      <label for="type">Action type &nbsp;</label>
-      <select id="type">
-        <option value="singleselect" selected>Single Select</option>
-        <option value="multiselect">Multi Select</option>
-        <option value="singleselect-hover">Single Select on hover</option>
-      </select>
-    </form>
 
-    <div style="background-color: steelblue; color: white"><p style="color: yellow">Village Information:</p>
+    <div style="background-color: steelblue; color: white">
         <strong><p id="esr"></p></strong>
         <p id="st_nm"></p>
         <p id="tehs_nm"></p>
         <p id="dist_nm"></p>
         <p id="village_nm"></p>
     </div>
-    <div id="info1" style="background-color: steelblue; color: white"><p style="color: yellow">District Information:</p>
+    <div id="info1" style="background-color: steelblue; color: white">
         <strong><p id="esr1"></p></strong>
         <p id="district"></p>
         <p id="st_name"></p>
         <p id="area"></p>
     </div>
-
-    <div class="dropdown">
-        State Name: <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
+    <div style="color: white; font-size: 20px">
+        <div id="grid_id"></div>
+        <div id="grid_nid"></div>
+        <div id="grid_intfsum"></div>
+        <div id="grid_forest18"></div>
+        <div id="grid_forest18p"></div>
+        <div id="grid_intfor"></div>
+        <div id="grid_elevmean"></div>
+        <div id="grid_slopemean"></div>
+        <div id="grid_state_name"></div>
+        <div id="grid_wgrainfall"></div>
+        <div id="grid_population"></div>
+        <div id="grid_tribal_pop"></div>
     </div>
-
 <div>
 
 </div>
@@ -68,9 +67,7 @@
 </div>
 <div id="footer" class="col-md-12">
 </div>
-<script>
 
-</script>
 <script type="module" src="main.js"></script>
 <!--   <script type="module" src="OpenLayers_Bhuvan.js"></script> -->
 </body>
