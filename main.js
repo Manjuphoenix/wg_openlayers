@@ -3,11 +3,31 @@ import TileLayer from 'ol/layer/Tile';
 import TileWMS from 'ol/source/TileWMS';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
+import {fromLonLat} from "ol/proj";
 
+
+
+var yourData;
+$.ajax({
+  type: 'GET',
+  url: 'http://10.84.240.111/dummy.php?esr=3',
+  dataType: 'json',
+  success: function(data) {
+    yourData=data;
+    //and whatever you need
+  },
+  data: {},
+  async: false
+});
+console.log(yourData)
+
+// displayProjection: new OpenLayers.Projection("EPSG:3857")
 
 var wg_villages = new TileLayer({
+    opacity: 0.4,
     title: 'villages',
     source: new TileWMS({
+        // projection: map.displayProjection,
         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
         params: {'LAYERS': 'WesternGhats:wg_villages', 'TILED': true},
         serverType: 'geoserver',
@@ -18,6 +38,7 @@ var wg_villages = new TileLayer({
 var wg_taluks = new TileLayer({
     title: 'taluks',
     source: new TileWMS({
+        // projection: map.displayProjection,
         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
         params: {'LAYERS': 'WesternGhats:wg_taluks', 'TILED': true},
         serverType: 'geoserver',
@@ -27,19 +48,20 @@ var wg_taluks = new TileLayer({
 
 
 
-var wg_districts = new TileLayer({
-    title: 'districts',
-    source: new TileWMS({
-        url: 'http://localhost:8080/geoserver/WesternGhats/wms',
-        params: {'LAYERS': 'WesternGhats:wg_districts', 'TILED': true},
-        serverType: 'geoserver',
-        visible: true
-    })
-});
+// var wg_districts = new TileLayer({
+//     title: 'districts',
+//     source: new TileWMS({
+//         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
+//         params: {'LAYERS': 'WesternGhats:wg_districts', 'TILED': true},
+//         serverType: 'geoserver',
+//         visible: true
+//     })
+// });
 
 var wg_states_layer = new TileLayer({
     title: 'states',
     source: new TileWMS({
+        // projection: map.displayProjection,
         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
         params: {'LAYERS': 'WesternGhats:wg_states', 'TILED': true},
         serverType: 'geoserver',
@@ -50,6 +72,7 @@ var wg_states_layer = new TileLayer({
 var wg_grids = new TileLayer({
     title: 'districts',
     source: new TileWMS({
+        // projection: map.displayProjection,
         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
         params: {'LAYERS': 'WesternGhats:wg_grids', 'TILED': true},
         serverType: 'geoserver',
@@ -60,6 +83,7 @@ var wg_grids = new TileLayer({
 var wg_westernghats = new TileLayer({
     title: 'western_ghats',
     source: new TileWMS({
+        // projection: map.displayProjection,
         url: 'http://localhost:8080/geoserver/WesternGhats/wms',
         params: {'LAYERS': 'WesternGhats:western_ghats', 'TILED': true},
         serverType: 'geoserver',
@@ -365,11 +389,11 @@ window.villages = wg_village;
 window.districts = wg_district;
 window.westernghats = westernghats;
 window.grids = grids;
-window.states = wg_states;
+window.wg_states = wg_states;
 window.taluks = taluks;
 
 const view = new View({
-    center: [0, 0],
+    center: fromLonLat([74.312, 17.393]),
     zoom: 5,
 });
 

@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.1.0/dist/ol.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.1.0/ol.css">
+
     <style>
         .map {
             width: 100%;
@@ -16,7 +17,7 @@
         }
     </style>
 </head>
-<body onload = "window.parent.taluks()">
+<body>
 <div id="header" class="col-md-12">
     <h1 class="text-center">Western Ghats</h1>
     <div align="right">
@@ -34,29 +35,6 @@
 <div id="side_panel" style="position: absolute; height: 100%; background-color: steelblue" class="col-md-3 col-sm-12">
     <h1 style="color: greenyellow" class="text-center"><strong>Information</strong></h1>
 
-    <div style="background-color: steelblue; color: white">
-        <strong><p id="esr"></p></strong>
-        <p id="st_nm"></p>
-        <p id="tehs_nm"></p>
-        <p id="dist_nm"></p>
-        <p id="village_nm"></p>
-    </div>
-    <div id="info1" style="background-color: steelblue; color: white">
-        <strong><p id="esr1"></p></strong>
-        <p id="district"></p>
-        <p id="st_name"></p>
-        <p id="area"></p>
-    </div>
-
-    <div style="color: white; font-size: 20px">
-        <div id="taluk_esa"></div>
-        <div id="taluk_state_name"></div>
-        <div id="taluk_dist_name"></div>
-        <div id="taluk_taluk_name"></div>
-        <div id="taluk_area"></div>
-        <div id="taluk_country"></div>
-    </div>
-
 <div>
 
 </div>
@@ -64,7 +42,9 @@
 </div>
 <div id="footer" class="col-md-12">
 </div>
+<script>
 
+</script>
 <script type="module" src="main.js"></script>
 <!--   <script type="module" src="OpenLayers_Bhuvan.js"></script> -->
 </body>
