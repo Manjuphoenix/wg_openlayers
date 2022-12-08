@@ -17,7 +17,7 @@
     </style>
 </head>
 <body onload = "window.parent.taluks()">
-<div id="header" class="col-md-12">
+<div  style="position: sticky" id="header">
     <h1 class="text-center">Western Ghats</h1>
     <div align="right">
         <a href="home.html"><button>Home</button></a>
@@ -30,8 +30,8 @@
     </div>
 </div>
 
-<div id="map" class="map col-md-9"></div>
-<div id="side_panel" style="position: absolute; height: 100%; background-color: steelblue" class="col-md-3 col-sm-12">
+<div style="position: fixed"  id="map" class="map col-md-9"></div>
+<div id="side_panel" style="position: fixed; overflow: scroll; height: 89.5%; background-color: steelblue" class="col-md-3 col-sm-12">
     <h1 style="color: greenyellow" class="text-center"><strong>Information</strong></h1>
 
     <div style="background-color: steelblue; color: white">

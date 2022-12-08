@@ -4,6 +4,8 @@ import TileWMS from 'ol/source/TileWMS';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 import {fromLonLat} from "ol/proj";
+import {coordinates} from "ol/geom/flat/reverse";
+import {packColor} from "ol/renderer/webgl/shaders";
 
 
 
